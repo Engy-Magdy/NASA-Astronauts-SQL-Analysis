@@ -79,11 +79,13 @@ GROUP BY Groups
 HAVING COUNT(*) >= 3;
 ```
 ## 🚀 How to Run
-Clone the repository:
+### 1. Clone the repository:
 
+```sql
 Bash
 git clone [https://github.com/Engy-Magdy/nasa-astronauts-sql-analysis.git](https://github.com/Engy-Magdy/nasa-astronauts-sql-analysis.git)
-Open in SQLite:
+```
+### 2. Open in SQLite:
 
 Launch DB Browser for SQLite (or any SQLite client).
 
