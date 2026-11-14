@@ -34,14 +34,15 @@ The database consists of a single table, `NASA_Astronauts_Sample`, structured as
 Retrieves all astronaut records ordered by their selection year to observe recruitment timelines.
 ```sql
 SELECT * FROM NASA_Astronauts_Sample ORDER BY Year;
-
- 2. Average Tenure Calculation
+```
+### 2. Average Tenure Calculation
 Calculates the average number of years elapsed since the astronauts joined NASA (referenced to 2026), rounded to one decimal place.
 
-SQL
+```sql
 SELECT ROUND(AVG(2026 - Year), 1) AS "Average_Years_Since_Joining"
 FROM NASA_Astronauts_Sample;
-3. Experience Level Classification (CASE Statement)
+```
+### 3. Experience Level Classification (CASE Statement)
 Categorizes astronauts currently in service (Active or Management) into experience tiers based on years since selection, labeling Retired and Deceased astronauts as N/A:
 
 Astronaut Candidate: Less than 4 years
@@ -50,7 +51,7 @@ Mission Specialist: 4 to 11 years
 
 Veteran Astronaut: More than 11 years
 
-SQL
+```sql
 SELECT Name, Year,
   CASE
     WHEN (2026 - Year) < 4 AND Status IN ('Active', 'Management') THEN 'Astronaut Candidate'
@@ -59,22 +60,25 @@ SELECT Name, Year,
     ELSE 'N/A'
   END AS 'The experience'
 FROM NASA_Astronauts_Sample;
-4. Gender Distribution
+```
+### 4. Gender Distribution
 Aggregates the total count of astronauts by gender.
 
-SQL
+```sql
 SELECT Gender, COUNT(*) AS Number 
 FROM NASA_Astronauts_Sample 
 GROUP BY Gender;
-5. Cohort Size Filtering (GROUP BY & HAVING)
+```
+### 5. Cohort Size Filtering (GROUP BY & HAVING)
 Identifies NASA astronaut groups in the sample that contain 3 or more members.
 
-SQL
+```sql
 SELECT Groups, COUNT(*) AS Members
 FROM NASA_Astronauts_Sample
 GROUP BY Groups
 HAVING COUNT(*) >= 3;
-🚀 How to Run
+```
+## 🚀 How to Run
 Clone the repository:
 
 Bash
@@ -87,5 +91,5 @@ Create a new database and open the .sql script in the Execute SQL tab.
 
 Run the script to build the table, populate the 33 records, and view the query outputs.
 
-📄 Data Notes
+## 📄 Data Notes
 Some records contain NULL values in Undergraduate_Major or Graduate_Major where degree details were unavailable in the source sample.
